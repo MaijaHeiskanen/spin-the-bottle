@@ -9,7 +9,7 @@ class App extends React.Component {
     super();
     this.state = {
       isSpinning: false,
-      players: ["John", "Adam", "Yannica"],
+      players: [],
       target: null,
     };
     this.spinTheBottle = this.spinTheBottle.bind(this);

@@ -63,7 +63,7 @@ class PlayerMenu extends React.Component {
   }
 
   _renderPlayers() {
-    if (!this.props.players) {
+    if (this.props.players.length === 0) {
       return null;
     }
 
