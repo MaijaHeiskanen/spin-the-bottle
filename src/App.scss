@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  color: rgb(190, 229, 255);
+}
+
+.App-logo {
+  height: 40vmin;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: Bottle-spin infinite 30s linear;
+  }
+}
+
+.spinning {
+  animation: Bottle-spin 4 0.25s linear;
+}
+
+.still {
+  animation: none;
+}
+
+.bottle-container {
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+
+  .bottle-button {
+    background-color: #282c34;
+    border: none;
+  }
+
+  .header {
+    font-size: 3rem;
+  }
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 25vw;
+
+  .title {
+    font-size: 2rem;
+    margin: 2rem 0 4rem 0;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes Bottle-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
