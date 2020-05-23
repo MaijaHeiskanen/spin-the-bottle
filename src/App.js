@@ -14,6 +14,8 @@ class App extends React.Component {
     };
     this.spinTheBottle = this.spinTheBottle.bind(this);
     this.setSpin = this.setSpin.bind(this);
+    this.addPlayer = this.addPlayer.bind(this);
+    this.removePlayer = this.removePlayer.bind(this);
   }
 
   addPlayer(newPlayer) {
@@ -39,7 +41,7 @@ class App extends React.Component {
     if (players.includes(removedPlayer)) {
       for (let i = 0; i < players.length; i++) {
         if (players[i] === removedPlayer) {
-          players.splice(i);
+          players.splice(i, 1);
         }
       }
       this.setState({ players: players });
@@ -74,7 +76,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="menu-container">
-          <PalyerMenu players={this.state.players} />
+          <PalyerMenu
+            players={this.state.players}
+            addPlayer={this.addPlayer}
+            removePlayer={this.removePlayer}
+          />
         </div>
         <div className="bottle-container">
           {this.state.isSpinning ? (
