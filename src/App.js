@@ -20,11 +20,23 @@ class App extends React.Component {
 
   addPlayer(newPlayer) {
     let players = this.state.players;
-    if (!players.includes(newPlayer)) {
-      players.push(newPlayer);
-      this.setState({ players: players });
-    } else {
-      // TODO: Tell that the player is already in the list!
+    let sure = true;
+
+    if (
+      newPlayer.toLowerCase() === "nico" ||
+      newPlayer.toLowerCase() === "niso"
+    ) {
+      // eslint-disable-next-line no-restricted-globals
+      sure = confirm("Oletko varma?? Aika massive uhka Xd");
+    }
+
+    if (sure) {
+      if (!players.includes(newPlayer)) {
+        players.push(newPlayer);
+        this.setState({ players: players });
+      } else {
+        alert("TäMä pELaAjA oLi Jo LiSTaSsA!!1!!!1");
+      }
     }
   }
 

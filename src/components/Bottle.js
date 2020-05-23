@@ -27,13 +27,9 @@ class Bottle extends React.Component {
     }
 
     return (
-      <button
-        className="bottle-button"
-        disabled={this.props.isSpinning}
-        onClick={this.clicked}
-      >
+      <div disabled={this.props.isSpinning} onClick={this.clicked}>
         <img src={bottle} className={className} alt="bottle" />
-      </button>
+      </div>
     );
   }
 }
