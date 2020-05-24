@@ -6,14 +6,10 @@ class Bottle extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      className: "App-logo",
-    };
-
-    this.clicked = this.clicked.bind(this);
+    this._clicked = this._clicked.bind(this);
   }
 
-  clicked() {
+  _clicked() {
     this.props.setSpin();
     this.props.spin();
   }
@@ -27,7 +23,7 @@ class Bottle extends React.Component {
     }
 
     return (
-      <div disabled={this.props.isSpinning} onClick={this.clicked}>
+      <div disabled={this.props.isSpinning} onClick={this._clicked}>
         <img src={bottle} className={className} alt="bottle" />
       </div>
     );

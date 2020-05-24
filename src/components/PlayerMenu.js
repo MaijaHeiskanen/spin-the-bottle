@@ -9,20 +9,30 @@ class PlayerMenu extends React.Component {
       newPlayer: "",
     };
 
-    this.addPlayer = this.addPlayer.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.removePlayer = this.removePlayer.bind(this);
+    this._addPlayer = this._addPlayer.bind(this);
+    this._handleChange = this._handleChange.bind(this);
+    this._removePlayer = this._removePlayer.bind(this);
   }
 
-  addPlayer() {
-    if (this.state.newPlayer.length > 0) {
-      this.props.addPlayer(this.state.newPlayer);
-      this.setState({ newPlayer: "" });
+  _addPlayer(event) {
+    if (
+      (event.type === "keypress" && event.key === "Enter") ||
+      event.type === "click"
+    ) {
+      console.log(event);
+      if (this.state.newPlayer.length > 0) {
+        this.props.addPlayer(this.state.newPlayer);
+        this.setState({ newPlayer: "" });
+      }
     }
   }
 
-  handleChange(event) {
+  _handleChange(event) {
     this.setState({ newPlayer: event.target.value });
+  }
+
+  _removePlayer(player) {
+    this.props.removePlayer(player);
   }
 
   _renderAddPlayer() {
@@ -32,18 +42,15 @@ class PlayerMenu extends React.Component {
           className="add-player-input"
           type="text"
           value={this.state.newPlayer}
-          onChange={this.handleChange}
+          onChange={this._handleChange}
           placeholder="Player's name"
+          onKeyPress={this._addPlayer}
         ></input>
-        <button className="add-player-button" onClick={this.addPlayer}>
+        <button className="add-player-button" onClick={this._addPlayer}>
           Add
         </button>
       </div>
     );
-  }
-
-  removePlayer(player) {
-    this.props.removePlayer(player);
   }
 
   _renderPlayer(player) {
@@ -52,7 +59,7 @@ class PlayerMenu extends React.Component {
         <div className="player-name">{player}</div>
         <button
           onClick={() => {
-            this.removePlayer(player);
+            this._removePlayer(player);
           }}
           className="delete-button"
         >

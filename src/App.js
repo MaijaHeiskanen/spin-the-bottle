@@ -18,6 +18,14 @@ class App extends React.Component {
     this.removePlayer = this.removePlayer.bind(this);
   }
 
+  _getRandomPlayer() {
+    const players = this.state.players;
+    const amount = players.length;
+    const randomInt = Math.floor(Math.random() * (0 - amount)) + amount;
+    const player = players[randomInt];
+    return player;
+  }
+
   addPlayer(newPlayer) {
     let players = this.state.players;
     let sure = true;
@@ -40,14 +48,6 @@ class App extends React.Component {
     }
   }
 
-  _getRandomPlayer() {
-    const players = this.state.players;
-    const amount = players.length;
-    const randomInt = Math.floor(Math.random() * (0 - amount)) + amount;
-    const player = players[randomInt];
-    return player;
-  }
-
   removePlayer(removedPlayer) {
     let players = this.state.players;
     if (players.includes(removedPlayer)) {
@@ -58,8 +58,12 @@ class App extends React.Component {
       }
       this.setState({ players: players });
     } else {
-      // TODO: Error??
+      console.log("Something went wrong: Couldn't find the player to remove.");
     }
+  }
+
+  setSpin() {
+    this.setState({ isSpinning: true });
   }
 
   spinTheBottle() {
@@ -67,10 +71,6 @@ class App extends React.Component {
       const randomPlayer = this._getRandomPlayer();
       this.setState({ isSpinning: false, target: randomPlayer });
     }, 1050);
-  }
-
-  setSpin() {
-    this.setState({ isSpinning: true });
   }
 
   render() {
