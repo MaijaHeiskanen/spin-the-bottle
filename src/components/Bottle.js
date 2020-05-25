@@ -1,5 +1,5 @@
 import React from "react";
-import bottle from "./../bottle2.png";
+import bottle from "./../bottle9.png";
 import "./../App.scss";
 
 class Bottle extends React.Component {

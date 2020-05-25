@@ -91,7 +91,10 @@ class PlayerMenu extends React.Component {
       <>
         <div className="title">Who are playing?</div>
         {players || <div>There is no players yet. Add some!</div>}
-        {addPlayer}
+        <div>
+          <div className="divider"></div>
+          {addPlayer}
+        </div>
       </>
     );
   }
